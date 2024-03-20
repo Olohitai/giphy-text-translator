@@ -10,8 +10,6 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 import json
 
-# Initialize Slack WebClient
-
 SLACK_BOT_TOKEN = os.getenv('SLACK_BOT_TOKEN')
 slack_client = WebClient(token=SLACK_BOT_TOKEN)
 # Initialize Slack Bolt app
@@ -38,7 +36,7 @@ def analyze_sentiment(text):
         return jsonify({'error': 'Text parameter is missing or empty'}), 400
     # Create a TextBlob object for the input text
     blob = TextBlob(text)
-    # Perform sentiment analysis and return the polarity score
+
     return blob.sentiment.polarity
 
 
@@ -50,28 +48,27 @@ def extract_keywords(text):
 
     # Perform spell-checking and autocorrection
     corrected_tokens = [spell_checker.correction(token) for token in tokens]
+
     # Perform part-of-speech tagging to identify word types (nouns, verbs, adjectives, etc.)
     tagged_tokens = pos_tag(corrected_tokens)
 
-    # Initialize a list to store extracted keywords
     keywords = []
 
     # Define the part-of-speech tags that represent nouns, verbs, and adjectives
-    noun_tags = ['NN', 'NNS', 'NNP', 'NNPS']  # Nouns
-    verb_tags = ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']  # Verbs
-    adjective_tags = ['JJ', 'JJR', 'JJS']  # Adjectives
+    noun_tags = ['NN', 'NNS', 'NNP', 'NNPS']
+    verb_tags = ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']
+    adjective_tags = ['JJ', 'JJR', 'JJS']
 
     # Iterate through the tagged tokens and extract keywords based on their part-of-speech tags
     for token, tag in tagged_tokens:
         if tag in noun_tags or tag in verb_tags or tag in adjective_tags:
-            # Convert to lowercase for consistency
             keywords.append(token.lower())
 
     # print(keywords)
     return keywords
 
 
-# # Define a function to fetch GIFs from the Giphy API based on a search query
+# Function to fetch GIFs from the Giphy API based on a search query
 def fetch_gifs(text_message, rating='g'):
     # Perform sentiment analysis on the text message
     sentiment_score = analyze_sentiment(text_message)
