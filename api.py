@@ -31,7 +31,6 @@ def find_gif(ack, body, client):
     command_text = body['text']
     user_id = body['user_id']
     channel_id = body['channel_id']
-    # trigger_id = body['trigger_id']
     print(command_text, user_id, channel_id)
     relevant_gifs = fetch_gifs(command_text)
     # print(relevant_gifs)
