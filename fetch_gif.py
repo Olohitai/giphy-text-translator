@@ -55,7 +55,7 @@ def extract_keywords(text):
     keywords = []
 
     # Define the part-of-speech tags that represent nouns, verbs, and adjectives
-    noun_tags = ['NN', 'NNS', 'NNP', 'NNPS']
+    noun_tags = ['NN', 'NNS', 'NNP', 'NNPS']  # nouns
     verb_tags = ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']
     adjective_tags = ['JJ', 'JJR', 'JJS']
 
