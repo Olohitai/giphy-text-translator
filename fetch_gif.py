@@ -1,4 +1,6 @@
 import requests
+import aiohttp
+import async_timeout
 import os
 from flask import jsonify
 from textblob import TextBlob
@@ -69,31 +71,50 @@ def extract_keywords(text):
 
 
 # Function to fetch GIFs from the Giphy API based on a search query
-def fetch_gifs(text_message, rating='g'):
-    # Perform sentiment analysis on the text message
+# async def fetch_gifs(text_message, rating='g'):
+#     # Perform sentiment analysis on the text message
+#     sentiment_score = analyze_sentiment(text_message)
+
+#     # Extract keywords from the text message
+#     keywords = extract_keywords(text_message)
+
+#    # Determine the sentiment label based on the sentiment score
+#     sentiment_label = 'happy' if sentiment_score >= 0.05 else 'sad' if sentiment_score <= - \
+#         0.05 else 'neutral'
+
+#     # Construct the Giphy API search query based on sentiment label and extracted keywords
+#     query = sentiment_label + ' ' + ' '.join(keywords)
+#     # Define the rating parameter for filtering out explicit content
+
+#     rating = 'g'  # Default to general audience
+
+#     print(query)
+
+#     url = f'https://api.giphy.com/v1/gifs/search?api_key={GIPHY_API_KEY}&q={query}&limit=5&rating={rating}'
+#     response = requests.get(url)
+#     data = response.json()
+#     # Extract GIF URLs from response
+#     gif_urls = [item['images']['fixed_height']['url'] for item in data['data']]
+
+#     return gif_urls
+
+
+async def fetch_gifs(text_message, rating='g'):
     sentiment_score = analyze_sentiment(text_message)
-
-    # Extract keywords from the text message
     keywords = extract_keywords(text_message)
-
-   # Determine the sentiment label based on the sentiment score
     sentiment_label = 'happy' if sentiment_score >= 0.05 else 'sad' if sentiment_score <= - \
         0.05 else 'neutral'
-
-    # Construct the Giphy API search query based on sentiment label and extracted keywords
     query = sentiment_label + ' ' + ' '.join(keywords)
-    # Define the rating parameter for filtering out explicit content
-
-    rating = 'g'  # Default to general audience
-
-    print(query)
+    rating = 'g'
 
     url = f'https://api.giphy.com/v1/gifs/search?api_key={GIPHY_API_KEY}&q={query}&limit=5&rating={rating}'
-    response = requests.get(url)
-    data = response.json()
-    # Extract GIF URLs from response
-    gif_urls = [item['images']['fixed_height']['url'] for item in data['data']]
 
+    async with aiohttp.ClientSession() as session:
+        async with async_timeout.timeout(10):
+            async with session.get(url) as response:
+                data = await response.json()
+
+    gif_urls = [item['images']['fixed_height']['url'] for item in data['data']]
     return gif_urls
 
 
