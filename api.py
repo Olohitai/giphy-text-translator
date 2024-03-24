@@ -101,12 +101,12 @@ def handle_gif_selection(ack, body, say, client):
     )
 
 
-# def main(environ, start_response):
-#     handler = SocketModeHandler(app, SLACK_APP_TOKEN)
-#     handler.start()
-def main():
+def main(environ, start_response):
     handler = SocketModeHandler(app, SLACK_APP_TOKEN)
     handler.start()
+# def main():
+#     handler = SocketModeHandler(app, SLACK_APP_TOKEN)
+#     handler.start()
 
 
 if __name__ == '__main__':
