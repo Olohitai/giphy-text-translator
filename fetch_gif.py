@@ -1,5 +1,5 @@
 import requests
-
+import nltk
 import os
 from flask import jsonify
 from textblob import TextBlob
@@ -17,10 +17,10 @@ slack_client = WebClient(token=SLACK_BOT_TOKEN)
 # bolt_app = App(token=SLACK_BOT_TOKEN)
 
 # Download NLTK data (if not already downloaded)
-# nltk.download('punkt')
-# nltk.download('averaged_perceptron_tagger')
-# nltk.download('maxent_ne_chunker')
-# nltk.download('words')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker')
+nltk.download('words')
 
 # Load environment variables from .env file
 load_dotenv()
