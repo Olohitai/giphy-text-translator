@@ -88,3 +88,7 @@ While the current version of the bot is functional, there are opportunities for 
 - **Shortcuts:** Implementing shortcuts can provide users with quicker access to common features or actions within the bot.
 
 - **Customization Options:** Adding features that allow users to customize GIF preferences and filters based on themes, emotions, or keywords can enhance user engagement and satisfaction.
+
+## Contributing
+Contributions to the Slack GIF Bot project are welcome! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on GitHub.
+
