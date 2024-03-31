@@ -5,7 +5,7 @@ The Slack GIF Bot is a Python application built with the Slack Bolt framework an
 ## Purpose
 This project aims to make it easier for users to find and share GIFs within Slack channels. With Giphy API integration, users can search for GIFs using keywords and sentiments, making conversations more engaging and dynamic.
 
-## Features
+## Main Features
 
 - **GIF Search**: Users can search for GIFs using slash commands or interactive shortcuts.
 - **Sentiment Analysis**: The bot performs sentiment analysis on user input to tailor GIF suggestions based on the mood of the conversation.
@@ -74,3 +74,17 @@ python api.py
 
 ## Usage
 Once the bot is running, users can interact with it in Slack by typing commands such as /find-gif followed by keywords to search for GIFs. The bot will respond with a modal containing maximum of 5 GIF search results, allowing users to select and share GIFs in their conversations.
+
+### Lessons Learned
+
+Having never worked with Slack apps previously, I found this project to be really educational. I gained more knowledge on how to use the Slack platform more effectively,  including understanding different API endpoints, authentication methods, and event subscriptions needed to create a functional bot. Additionally, I expanded my knowledge of leveraging external services within a project and improved my error handling skills.
+
+Designing an intuitive user experience within Slack involved creating interactive messages, handling user inputs, and providing meaningful responses.
+
+### Areas for Improvement
+
+While the current version of the bot is functional, there are opportunities for further enhancement:
+
+- **Shortcuts:** Implementing shortcuts can provide users with quicker access to common features or actions within the bot.
+
+- **Customization Options:** Adding features that allow users to customize GIF preferences and filters based on themes, emotions, or keywords can enhance user engagement and satisfaction.
