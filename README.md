@@ -19,3 +19,13 @@ This project aims to make it easier for users to find and share GIFs within Slac
 
 1. **Create a New Application:**
    - Create a new application [here](https://api.slack.com/apps).
+
+2. **Enable Events:**
+   - Go to your application and navigate to the "Event Subscriptions" tab.
+   - Set "Enable Events" to On.
+   - Add the following events to subscribe to:
+     - `app_mention`
+     - `message.channels`
+     - `message.groups`
+     - `message.im`
+     - `message.mpim`
