@@ -61,7 +61,7 @@ This project aims to make it easier for users to find and share GIFs within Slac
    - For `SLACK_BOT_TOKEN`, copy the Bot User OAuth Token from the "Install App" tab of your Slack application.
    - For `GIPHY_API_KEY`, create an account on [Giphy](https://developers.giphy.com/dashboard/) and obtain an API key.
    
-## Usage
+## Start the application
 
 Once the prerequisites are set up, activate the virtual environment (if not already activated) and start the application:
 
